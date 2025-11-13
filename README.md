@@ -1,5 +1,5 @@
 # Overview
-## Python Resistance Feedback Control System 
+## Multichannel Smart Tracking of REsistance for Adaptive Modulation (MultiSTREAM)
 Provides automated voltage regulation for single channel or multichannels. <br>
 <br>
 Continuously monitors the resistances of active channel(s) and adjusts voltage(s) to maintain target resistance(s) within tolerance. <br>
