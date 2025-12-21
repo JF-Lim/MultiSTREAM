@@ -48,23 +48,23 @@ Monitors microheater resistances and adjusts voltages to stabilise microheaters 
 Executes multiple feedback loops in a sequential order, with each feedback loop exiting after a specified hold_duration
 > If feedback mode is active and hold_duration = None, the loop will run indefinitely until a keyboard interrupt
 
-# Feedback Mode
+## Feedback Mode
 If the active channel(s) resistance more/less than target + tolerance:
 the respective voltage(s) will decrease/increase by the voltage_step
 
 Otherwise, the voltage(s) will be held constant
 
 The system waits for update_time before next round of feedback control
-# Rampdown Mode
+## Rampdown Mode
 If rampdown mode is active and a hold_duration is set, 
 > Loop terminate after a specified duration when all channels finish ramping down to 0 V
 
-# Batch Update Optimisation
+## Batch Update Optimisation
 For the 24-channel 48V-1A system, voltage updates are only sent to Teensy 4.1 for channels requiring adjustment
 
 Teensy 4.1 communicates with DACs in batch mode rather than sequentially
 > Minimises communication overhead and ensures synchronised control across all channels
-# State Continuity Between Steps
+## State Continuity Between Steps
 Voltages: Last voltages from previous step become starting voltages for next step
 
 CSV logging: all steps append to same CSV file
