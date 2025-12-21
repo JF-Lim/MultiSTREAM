@@ -10,15 +10,17 @@ Active channels are configured by setting target resistances to a defined value
 > Resistances of active channels will be monitored for feedback control
 
 Monitor channels can be configured by setting the target resistance = None
-> Voltages will be set to 0 V and be excluded from feedback control
+> Voltages will be set to 0 V and channels are excluded from feedback control
 >
 > Continue being monitored and their readings logged
 
 Channels can be configured for a voltage ramp down by setting the target resistance = -1 
 > Rampdown mode activates if all target resistances are set to either None (monitor) or -1 (ramp down)
 
-If any channel resistance > fail_resistance,
-> voltages set to 0 V and channels will be permanently excluded from further feedback control, continue being monitored and their readings logged.
+If any measured resistance > fail_resistance,
+> Voltages will be set to 0 V and channels are excluded from feedback control
+>
+> Continue being monitored and their readings logged
 
 ## Multichannel Demonstration
 The target resistances of nine channels (red) are set in one sequence
@@ -28,13 +30,23 @@ A monitor channel (purple) is configured by setting its target resistance = None
 
 <img src="images/9-heaters-644-925.svg" width="500" alt="Alt text">
 
+## Multisequence Demonstration
+The target resistances of two channels are gradually shifted apart in sequences
+
+Eventually, one of the channel failed to stabilise (highlighted in yellow)
+> For this demonstration, failed channel was kept constant at 1.1 V
+>
+> Channel continues to be monitored with readings logged
+
+<img src="images/multisequence-control.svg" width="500" alt="Alt text">
+
 # System Architecture
 The control system consists of two main functions that work together:
 ## feedback_loop()
 Monitors microheater resistances and adjusts voltages to stabilise microheaters at defined target resistances
 ## series_feedback()
 Executes multiple feedback loops in a sequential order, with each feedback loop exiting after a specified hold_duration
-> If feedback mode is active, hold_duration = None means the feedback loop will run indefinitely until KeyBoard Interrupt
+> If feedback mode is active and hold_duration = None, the loop will run indefinitely until a keyboard interrupt
 
 # Feedback Mode
 If the active channel(s) resistance more/less than target + tolerance:
