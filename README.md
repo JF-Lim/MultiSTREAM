@@ -19,14 +19,14 @@ Channels can be configured for a voltage ramp down by setting the target resista
 
 If any channel resistance > fail_resistance,
 > voltages set to 0 V and channels will be permanently excluded from further feedback control, continue being monitored and their readings logged.
-> 
 
-## Two-Channel Control Demonstration
-The target resistances of two channels are gradually shifted apart in subsequent sequences
+## Multichannel Demonstration
+The target resistances of nine channels (red) are set in one sequence
+> Eventually, all channels stabilised at their target resistances
 
-Eventually, one of the channel's resistances starts rising and can no longer meet its target resistance (highlighted in yellow)
+A monitor channel (purple) is configured by setting its target resistance = None
 
-<img src="images/multisequence-control.svg" width="500" alt="Alt text">
+<img src="images/9-heaters-644-925.svg" width="500" alt="Alt text">
 
 # System Architecture
 The control system consists of two main functions that work together:
